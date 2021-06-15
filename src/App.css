@@ -1,38 +1,83 @@
-.App {
-  text-align: center;
+*,*::after,*::before {
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+    height: 100vh;
+    width:100vw;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+    ". i i i i i i i i i . b"
+    ". s s s s s s s s s . b";
+    padding:1rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bg-img{
+    grid-area: i;
+    background:blue;
+    background: url('./images/kalen-emsley-Bkci_8qcdvQ-unsplash.jpg');
+    background-position: top center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    width:100%;
+    height:100%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.sidebar {
+    grid-area: b;
+    background:#5f5d5d;
 }
-
-.App-link {
-  color: #61dafb;
+.slider-continaer{
+    grid-area: s;
+    margin-top:1rem;
+    padding:1rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.slider {
+    width:100%;
+}
+.sidebar-btn {
+    display:flex;
+    align-items:stretch;   
+    flex-direction:column;
+    border:none;
+    outline:none;
+    padding:1rem;
+    color:white;
+    font-size:0.9rem;
+    background:gray;
+    position: relative;
+    width:100%;
+}
+.sidebar-btn::after {
+    content:'';
+    bottom:0;
+    left:10%;
+    right:0;
+    width:80%;
+    position: absolute;
+    height:2px;
+    background:darkgray;
+    cursor:pointer;
+    transition:background 0.2s ease-in-out;
+}
+.sidebar-btn:hover {
+    background: #1f1f11;
+}
+.sidebar-btn:last-child::after{
+    /* content:''; */
+    display: none;
+}
+.sidebar-btn.active{
+    background:#1f1f11;
+}
+@media only screen and ( max-width :789px) {
+    .container {
+        grid-template-columns: auto;
+        grid-template-rows: 300px 300px 300px;
+        grid-template-areas:
+            ". b b b b b b b b b b . "
+            ". i i i i i i i i i i . "
+            ". s s s s s s s s s s . ";
+    }
 }
